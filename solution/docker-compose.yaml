@@ -1,0 +1,29 @@
+version: '3'
+services:
+  csvserver:
+    image: infracloudio/csvserver:latest
+    container_name: csvserver
+    env_file:
+      - csvserver.env
+    ports:
+      - "9393:9300"
+    volumes:
+      - ./inputFile:/csvserver/inputdata
+    networks:
+      - my_network
+
+  prometheus:
+    image: prom/prometheus:v2.22.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+

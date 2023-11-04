@@ -1,0 +1,1 @@
+docker logs f24af21251a6 >& part-1-logs

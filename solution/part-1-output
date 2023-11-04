@@ -1,0 +1,3 @@
+curl -o ./part-1-output http://localhost:9393/raw
+# if the above command fails use,
+wget -O ./part-1-output http://localhost:9393/raw
